@@ -27,7 +27,7 @@ h1{margin:0;font-size:22px;font-weight:800;letter-spacing:-.3px} .dates{font-siz
 .bd.c{background:var(--crit-soft);color:var(--crit)} .bd.a{background:var(--amber-soft);color:var(--amber)} .bd.o{background:transparent;color:var(--opt);border-color:var(--line)} .bd.i{background:var(--accent-soft);color:var(--accent)}
 .steps{margin:10px 0 2px;border-top:1px solid var(--line);padding-top:8px} .step{display:grid;grid-template-columns:46px minmax(0,1fr) auto;gap:8px;font-size:13.5px;line-height:1.45;padding:3px 0} .step .t{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:1px} .step a{font-size:12px;color:var(--accent);text-decoration:none;font-weight:700;white-space:nowrap}
 .act{display:flex;gap:6px;justify-content:flex-end;margin-top:8px} .act a,.act button{min-height:32px;display:inline-flex;align-items:center;justify-content:center;font:inherit;font-size:12.5px;font-weight:700;border-radius:6px;padding:0 10px;text-decoration:none;cursor:pointer}
-.act a{border:1px solid var(--accent);color:var(--accent);background:#fff} .act button{border:1px solid var(--line);background:#fff;color:var(--muted)} .act button.on{color:var(--accent);border-color:var(--accent)}
+.act a{border:1px solid var(--line);color:var(--accent);background:#fff;font-size:16px;padding:0 9px;min-width:36px} .act button{border:1px solid var(--line);background:#fff;color:var(--muted)} .act button.on{color:var(--accent);border-color:var(--accent)}
 .panel{display:none;margin-top:10px;padding-top:4px;font-size:13.5px;line-height:1.6} .card.open .panel{display:block}
 .panel h4{margin:10px 0 4px;font-size:11.5px;color:var(--muted);font-weight:700;letter-spacing:.4px;text-transform:uppercase} .panel p{margin:2px 0} .panel ul{margin:2px 0;padding-left:18px}
 .jp{background:#F6F6F4;border-radius:6px;padding:8px 10px;font-size:13.5px} .jp a{color:var(--accent)}
@@ -75,7 +75,7 @@ h1{margin:0;font-size:22px;font-weight:800;letter-spacing:-.3px} .dates{font-siz
     h.push('<div class="ttl"><span class="ic">'+b.ic+'</span>'+esc(b.t)+'</div>'+(b.sub?'<div class="sub">'+esc(b.sub)+'</div>':'')+badges(b.badges));
     if(b.steps&&b.steps.length) h.push('<div class="steps">'+b.steps.map(function(s){return '<div class="step"><span class="t">'+(s[0]||'')+'</span><span>'+esc(s[1])+'</span>'+(s[2]?'<a href="'+esc(s[2])+'" target="_blank" rel="noopener">지도</a>':'<span></span>')+'</div>';}).join('')+'</div>');
     var hasDetail = (b.checks&&b.checks.length)||b.cost||b.hours||b.how||b.ja||b.addr||b.tel||b.map||(b.ph&&b.ph.length)||(b.planb&&b.planb.length)||b.src||b.check||true;
-    h.push('<div class="act">'+(b.link?'<a href="'+esc(b.link)+'" target="_blank" rel="noopener">'+(b.link.indexOf('/maps/dir/')>-1?'길찾기':'지도')+'</a>':'')+'<button type="button" class="info">상세</button></div>');
+    h.push('<div class="act">'+(b.link?'<a href="'+esc(b.link)+'" target="_blank" rel="noopener" aria-label="'+(b.link.indexOf('/maps/dir/')>-1?'길찾기':'지도')+'" title="'+(b.link.indexOf('/maps/dir/')>-1?'길찾기':'지도')+'">'+(b.link.indexOf('/maps/dir/')>-1?'🧭':'📍')+'</a>':'')+'<button type="button" class="info">상세</button></div>');
     var p=[];
     if(b.checks&&b.checks.length) p.push('<h4>체크 포인트</h4><ul>'+b.checks.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>');
     if(b.cost) p.push('<h4>비용</h4><p>'+esc(b.cost)+'</p>');
